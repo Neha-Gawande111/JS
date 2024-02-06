@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="Quiz.css">
+</head>
+<body>
+    
+<h1>Welcome to Quiz</h1>
+<div class="panel">
+    <h2>Quiz Application Using JavaScript</h2>
+    <div class="question" id="ques"></div>
+    <div class="options" id="opt"></div>
+    <button onclick="checkAns()" id="btn">SUBMIT</button>
+    <div id="score"></div>
+    
+</div>
+
+
+<script>
+    const Questions = [{
+    q: "What is capital of India?",
+    a: [{ text: "Gandhinagar", isCorrect: false },
+    { text: "Surat", isCorrect: false },
+    { text: "Delhi", isCorrect: true },
+    { text: "Mumbai", isCorrect: false }
+    ]
+ 
+},
+{
+    q: "What is the capital of Thailand?",
+    a: [{ text: "Lampang", isCorrect: false, isSelected: false },
+    { text: "Phuket", isCorrect: false },
+    { text: "Ayutthaya", isCorrect: false },
+    { text: "Bangkok", isCorrect: true }
+    ]
+ 
+},
+{
+    q: "What is the capital of Gujarat",
+    a: [{ text: "Surat", isCorrect: false },
+    { text: "Vadodara", isCorrect: false },
+    { text: "Gandhinagar", isCorrect: true },
+    { text: "Rajkot", isCorrect: false }
+    ]
+ 
+},
+{
+    q: "What is the capital of France?",
+    a: [{ text: "Paris", isCorrect: true },
+    { text: "london", isCorrect: false },
+    { text: "Berlin", isCorrect: false },
+    { text: "Mumbai", isCorrect: false }
+    ]
+ 
+},
+{
+    q: "Which planet is known as the Red Planet?",
+    a: [{ text: "Earth", isCorrect: false },
+    { text: "venus", isCorrect: false },
+    { text: "Jupitor", isCorrect: false },
+    { text: "Mars", isCorrect: true }
+    ]
+ 
+}, 
+{
+    q: "What is the largest mammal in the world?",
+    a: [{ text: "African Elephant", isCorrect: false },
+    { text: "BlueWhale", isCorrect: true },
+    { text: "Giraffe", isCorrect: false },
+    { text: "fish", isCorrect: false }
+    ]
+ 
+}, 
+{
+    q: "The World Largest desert is ?",
+    a: [{ text: "Thar", isCorrect: false },
+    { text: "Kalahari", isCorrect: false },
+    { text: "Sahara", isCorrect: true },
+    { text: "Sonoran", isCorrect: false }
+    ]
+ 
+}, 
+{
+    q: "Who among the following wrote Sanskrit grammar?",
+    a: [{ text: "Kalidasa", isCorrect: false },
+    { text: "Charak", isCorrect: false },
+    { text: "Panini", isCorrect: true },
+    { text: "Aryabhatt", isCorrect: false }
+    ]
+    
+}, 
+{
+    q: "Which among the following headstreams meets the Ganges in last?",
+    a: [{ text: "Alaknanda", isCorrect: false },
+    { text: "Pindar", isCorrect: false },
+    { text: "Mandakini", isCorrect: false },
+    { text: "Bhagirathi", isCorrect: true }
+    ]
+    
+}, 
+{
+    q: "The metal whose salts are sensitive to light is?",
+    a: [{ text: "zink", isCorrect: false },
+    { text: "Silver", isCorrect: true },
+    { text: "Copper", isCorrect: false },
+    { text: "Aluminium", isCorrect: false }
+    ]
+    
+}
+];
+ 
+let currQuestion = 0
+let score = 0
+ 
+function loadQues() 
+{
+    const question = document.getElementById("ques")
+    const opt = document.getElementById("opt")
+ 
+    question.textContent = Questions[currQuestion].q;
+    opt.innerHTML = ""
+ 
+    for (let i = 0; i < Questions[currQuestion].a.length; i++) 
+    {
+        const choicesdiv = document.createElement("div");
+        const choice = document.createElement("input");
+        const choiceLabel = document.createElement("label");
+ 
+        choice.type = "radio";
+        choice.name = "answer";
+        choice.value = i;
+ 
+        choiceLabel.textContent = Questions[currQuestion].a[i].text;
+ 
+        choicesdiv.appendChild(choice);
+        choicesdiv.appendChild(choiceLabel);
+        opt.appendChild(choicesdiv);
+    }
+}
+ 
+loadQues();
+ 
+function loadScore() 
+{
+    const totalScore = document.getElementById("score")
+    totalScore.textContent = `You scored ${score} out of ${Questions.length}`
+}
+ 
+ 
+function nextQuestion() 
+{
+    if (currQuestion < Questions.length - 1) 
+    {
+        currQuestion++;
+        loadQues();
+    } else 
+    {
+        document.getElementById("opt").remove()
+        document.getElementById("ques").remove()
+        document.getElementById("btn").remove()
+        loadScore();
+    }
+}
+ 
+function checkAns() 
+{
+    const selectedAns = parseInt(document.querySelector('input[name="answer"]:checked').value);
+ 
+    if (Questions[currQuestion].a[selectedAns].isCorrect) 
+    {
+        score++;
+        console.log("Correct")
+        nextQuestion();
+    } else 
+    {
+        nextQuestion();
+    }
+
+                        
+}
+</script>
+</body>
+</html>

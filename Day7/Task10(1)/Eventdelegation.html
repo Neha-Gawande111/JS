@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        * {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	border-radius: 5px;
+	background-color: rgb(230, 230, 240);
+	padding: 20px;
+	max-width: 460px;
+	margin: 2% 40%;
+}
+
+li {
+	list-style: none;
+	padding: 15px 20px;
+	border-bottom: 2px solid #417ff4;
+	border-radius: 5px;
+}
+
+.item-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.quantity {
+	font-size: 1.2em;
+	padding: 5px 10px;
+}
+
+button {
+	padding: 5px 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="addToCart()">AddToCart</button>
+        <h2>Cart Items</h2>
+        
+    <ul>
+            <li>
+            <div class="item-container">
+                <div class="item-details"><p>Apples<p></div>
+                <div class="quantity-container">
+                    <button class="decrease">-</button>
+                    <span class="quantity">1</span>
+                    <button class="increase">+</button>
+                </div>
+            </div>
+            <button>Remove</button> 
+        </li> 
+    </ul>
+    <script>
+        let increase=document.querySelector(".increase"),
+ decrease=document.querySelector(".decrease"),
+ quantity=document.querySelector(".quantity")
+let a=1;
+increase.addEventListener("click",()=>{
+	a++;
+	quantity.innerHTML=a;
+	console.log(a);
+	
+});
+decrease.addEventListener("click",()=>{
+	if(a>1)
+	{
+		a--;
+	}
+	quantity.innerHTML=a;
+	console.log(a);
+	
+});
+    </script>
+</body>
+</html>

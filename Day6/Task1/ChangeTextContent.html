@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Text Content</title>
+    
+</head>
+<body>
+    
+    <div id="text">
+        <p>Welcome to JavaScript</p>
+    </div>
+
+    <button id="onclick">Click Me</button>
+
+    <script>
+        
+        document.getElementById("onclick").addEventListener("click", function() {
+            
+            let element1 = document.getElementById("text");
+
+            element1.textContent = "This is change text content";
+        });
+    </script>
+
+</body>
+</html>

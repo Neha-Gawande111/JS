@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form Validation</title>
+    <style>
+        .input{
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+            padding: 10px;
+        }
+        .input input{
+            padding: 10px;
+            margin: 10px;
+        }
+        #btn{
+            display: flex;
+            justify-content: space-around;
+            margin: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+<form id="registrationform">
+<div class="input"> 
+<h2>Form</h2>
+<label for="name">Name:</label>
+<input type="text" id="name" name="name" placeholder="Enter a name here" required>
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" placeholder="Enter email id here" required>
+<label for="password">Password:</label>
+<input type="password" id="password" name="password" placeholder="Enter password" required >
+</div>  
+<div id="btn"><button type="submit" onclick="validateForm()">SUBMIT</button></div>
+</form>
+<script> 
+function validateForm()
+{
+    var Name=document.getElementById("name");
+    var Email=document.getElementById("email");
+    var Password=document.getElementById("password");
+
+    if(Name.value=="" || Email.value=="" || Password.value=="")
+    {
+        alert("Filled the form value");
+        return false;
+    }
+    else
+    {
+        alert(" form submitted");
+        return true;
+    }
+}
+</script>
+</body>
+</html>

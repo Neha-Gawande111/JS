@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #container {
+            margin: 20px auto;
+            padding: 20px;
+            width: 400px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        h1 {
+            margin: 10px 0;
+        }
+
+        #question {
+            margin: 10px 10px;
+            
+        }
+
+        #choices {
+            margin: 10%;
+            
+        }
+
+        #result {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        #score {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Quiz Game</h1>
+        <div id="question"></div>
+        <div id="choices"></div>
+        <div id="result"></div>
+        <div id="score">Score: 0</div>
+        <button id="nextButton">Next</button>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What is the capital of France?",
+                choices: ["London", "Berlin", "Paris", "Madrid"],
+                correctAnswer: "Paris",
+            },
+            {
+                question: "Which planet is known as the Red Planet?",
+                choices: ["Earth", "Mars", "Venus", "Jupiter"], 
+                correctAnswer: "Mars",
+            },
+            {
+                question: "What is the largest mammal?",
+                choices: ["Elephant", "Giraffe", "Blue Whale", "Lion"],
+                correctAnswer: "Blue Whale",
+            },
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const questionElement = document.getElementById("question");
+        const choicesElement = document.getElementById("choices");
+        const resultElement = document.getElementById("result");
+        const scoreElement = document.getElementById("score");
+        const nextButton = document.getElementById("nextButton");
+
+        function displayQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionElement.textContent = currentQuestion.question;
+
+            choicesElement.innerHTML = "";
+            currentQuestion.choices.forEach((choice, index) => {
+                const choiceButton = document.createElement("button");
+                choiceButton.textContent = choice;
+                choiceButton.addEventListener("click", () => checkAnswer(index));
+                choicesElement.appendChild(choiceButton);
+            });
+
+            resultElement.textContent = "";
+            nextButton.style.display = "none";
+        }
+
+        function checkAnswer(selectedIndex) {
+            const currentQuestion = questions[currentQuestionIndex];
+            const correctIndex = currentQuestion.choices.findIndex((choice) => choice === currentQuestion.correctAnswer);
+
+            if (selectedIndex === correctIndex) {
+                resultElement.textContent = "Correct!";
+                score++;
+            } else {
+                resultElement.textContent = "Incorrect. The correct answer is: " + currentQuestion.correctAnswer;
+            }
+
+            scoreElement.textContent = "Score: " + score;
+            nextButton.style.display = "block";
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                displayQuestion();
+            } else {
+                questionElement.textContent = "Quiz completed!";
+                choicesElement.innerHTML = "";
+                resultElement.textContent = "Your final score is: " + score + " out of " + questions.length;
+                scoreElement.textContent = "";
+                nextButton.style.display = "none";
+            }
+        }
+
+        displayQuestion();
+
+        nextButton.addEventListener("click", nextQuestion);
+    </script>
+</body>
+</html>

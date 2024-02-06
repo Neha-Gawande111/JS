@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="EventDelegation.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <div class="items">
+            <div class="item">
+                <h2>Product 1</h2>
+                <p>$10.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="item">
+                <h2>Product 2</h2>
+                <p>$15.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!-- Add more items as needed -->
+        </div>
+        <div class="cart">
+            <h2>Cart item</h2>
+            <ul id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <p id="cart-total">Total: $0.00</p>
+        </div>
+    </div>
+    <script src="EventDelegation.js"></script>
+</body>
+</html>

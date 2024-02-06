@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageSlider</title>
+    <style> 
+button {
+    background-color: #2b6eb6;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    padding: 5px;
+    
+    border-radius: 10px;
+}
+</style>
+</head>
+<body>
+    
+    <div class="slider-container">           
+        <div class="slider">
+            <img class="slide" src="/Day6/Task8/mo-6q-6ICiZWIw-unsplash.jpg" height="200" width="300" alt="#">
+            <img class="slide" src="/Day6/Task8/neom-9hWJs7iblh8-unsplash.jpg" height="200" width="300" alt="#">
+            <img class="slide" src="/Day6/Task8/neom-gVDUuJaG_wM-unsplash.jpg" height="200" width="300" alt="#">
+            <img class="slide" src="/Day6/Task8/spenser-sembrat-qp3ijaf2bFc-unsplash.jpg" height="200" width="300" alt="#">
+            <img class="slide" src="/Day6/Task8/spenser-sembrat-veikogWYk14-unsplash.jpg" height="200" width="300" alt="#">
+        </div>
+        <button id="prevButton">Previous</button>
+        <button id="nextButton">Next</button>  
+    </div>
+    </div>
+    <script>
+
+    document.addEventListener("DOMContentLoaded", function() 
+    {
+        const slider = document.querySelector(".slider");
+        const prevBtn = document.getElementById("prevButton");
+        const nextBtn = document.getElementById("nextButton");
+        const images = document.querySelectorAll(".slider img");
+        
+    let currentIndex = 0;
+    function showImage(index) 
+    {        // Hide all images
+        images.forEach((image) => {image.style.display = "none"   });  
+        
+            // Display the selected image
+        images[currentIndex].style.display = "block";
+    }
+
+    function goToNextImage() 
+    {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }
+
+    function goToPrevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+    }
+
+    // Initial display
+    showImage(currentIndex);
+
+    // Event listeners for next and previous buttons
+    nextBtn.addEventListener("click", goToNextImage);
+    prevBtn.addEventListener("click", goToPrevImage);
+});
+      
+</script>
+</body>
+</html>

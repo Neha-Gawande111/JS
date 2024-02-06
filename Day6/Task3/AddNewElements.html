@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddElement</title>
+</head>
+<body>
+        
+    <ul id="list">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Orange</li>
+        <li>Mango</li>
+    </ul>
+    <input id="textinput" type="text" placeholder="Enter text">
+    <button id="addButton" onclick="addList();">Add Item</button>
+
+    <script>
+        function addList()
+        {
+            var textinput = document.getElementById("textinput");
+            list = document.getElementById("list");
+
+            addButton = document.getElementById("addButton");
+
+            listItem = document.createElement("li");
+            textNode = document.createTextNode(textinput.value)
+
+             listItem.appendChild(textNode);
+             list.appendChild(listItem);
+
+            textinput.value = '';
+}
+    </script>
+    
+</body>
+</html>

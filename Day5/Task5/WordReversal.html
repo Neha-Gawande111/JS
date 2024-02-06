@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Reversal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Word Reversal</h1>
+    <script>
+        function reverseWords() {
+            const input = prompt("Enter a sentence or word:");
+            if (input === null || input.trim() === "") {
+                alert("Invalid input. Please enter a sentence or word.");
+                return;
+            }
+
+            const words = input.split(' ');
+            const reversedWords = [];
+
+            for (const word of words) {
+                const reversedWord = reverseWord(word);
+                reversedWords.push(reversedWord);
+            }
+
+            const reversedSentence = reversedWords.join(' ');
+            alert("Reversed Sentence:\n" + reversedSentence);
+        }
+
+        function reverseWord(word) {
+            return word.split('').reverse().join('');
+        }
+
+        reverseWords();
+    </script>
+</body>
+</html>

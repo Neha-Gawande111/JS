@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Buttons:</title>
+</head>
+<body>
+    <button id="1" class="btn">Button1</button>
+    <button id="2"class="btn">Button2</button>
+    <button id="3"class="btn">Button3</button>
+    <button id="4"class="btn">Button4</button>
+    <button id="5"class="btn">Button5</button>
+    <p id="result">Click a button to see its ID or class.</p>
+
+    <script>
+        const buttons = document.querySelectorAll('.btn');
+        // Add a click event listener to each button
+        buttons.forEach(button => {button.addEventListener('click', function () {
+        // Get the ID and class of the clicked button
+        const buttonId = this.id;
+        const buttonClass = this.className;
+
+        // Display the ID and class in the result paragraph
+        const resultElement = document.getElementById('result');
+        resultElement.textContent = `Button ID: ${buttonId}, Button Class: ${buttonClass}`;
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #container {
+            margin: 20px auto;
+            padding: 20px;
+            width: 300px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label, input, select, button, p {
+            margin: 5px;
+            padding: 5px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Password Generator</h1>
+        <label for="passwordLength">Password Length:</label>
+        <input type="number" id="passwordLength" min="1" placeholder="Enter length">
+        <label for="includeLetters">Include Letters:</label>
+        <select id="includeLetters">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <label for="includeNumbers">Include Numbers:</label>
+        <select id="includeNumbers">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <label for="includeSpecialChars">Include Special Characters:</label>
+        <select id="includeSpecialChars">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <button onclick="generatePassword()">Generate Password</button>
+        <p id="passwordResult"></p>
+    </div>
+
+    <script>
+        function generatePassword() {
+            const passwordLength = parseInt(document.getElementById("passwordLength").value);
+            const includeLetters = document.getElementById("includeLetters").value === "true";
+            const includeNumbers = document.getElementById("includeNumbers").value === "true";
+            const includeSpecialChars = document.getElementById("includeSpecialChars").value === "true";
+            
+            if (isNaN(passwordLength) || passwordLength < 1) {
+                alert("Please enter a valid password length.");
+                return;
+            }
+
+            const charTypes = [];
+            if (includeLetters) charTypes.push("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+            if (includeNumbers) charTypes.push("0123456789");
+            if (includeSpecialChars) charTypes.push("!@#$%^&*()_+[]{}|;:,.<>?");
+
+            if (charTypes.length === 0) {
+                alert("Please select at least one character type.");
+                return;
+            }
+
+            const allChars = charTypes.join('');
+            let password = '';
+
+            for (let i = 0; i < passwordLength; i++) {
+                const randomIndex = Math.floor(Math.random() * allChars.length);
+                password += allChars[randomIndex];
+            }
+
+            document.getElementById("passwordResult").textContent = "Generated Password: " + password;
+        }
+    </script>
+</body>
+</html>

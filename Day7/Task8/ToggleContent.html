@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToggleContent</title>
+</head>
+<body>
+    <button id="toggleButton">Toggle</button>
+    <div id="toggleDiv">
+        <p>This is toggle case Div</p>
+    </div>
+    <script>
+        const toggleButton=document.getElementById('toggleButton');
+        const toggleDiv=document.getElementById('toggleDiv');
+
+        toggleButton.addEventListener('click',function(){if(toggleDiv.style.display==='none'){toggleDiv.style.display='block';}
+    else{toggleDiv.style.display='none';}});
+    </script>
+</body>
+</html>

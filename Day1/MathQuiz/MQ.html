@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Math Quiz</title>
+</head>
+<body>
+    <h1>Math Quiz</h1>
+    <div id="question"></div>
+    <input type="text" id="answer" placeholder="Enter your answer">
+    <button onclick="checkAnswer()">Submit</button>
+    <p id="feedback"></p>
+
+    <script>
+        // Function to generate a random math problem
+        function generateProblem() {
+            const operations = ['+', '-', '*', '/'];
+            const randomOperation = operations[Math.floor(Math.random() * operations.length)];
+            const num1 = Math.floor(Math.random() * 10) + 1;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+
+            let question;
+
+            switch (randomOperation) {
+                case '+':
+                    question = `${num1} + ${num2}`;
+                    break;
+                case '-':
+                    question = `${num1} - ${num2}`;
+                    break;
+                case '*':
+                    question = `${num1} * ${num2}`;
+                    break;
+                case '/':
+                    // Make sure the division result is a whole number
+                    const product = num1 * num2;
+                    question = `${product} / ${num1}`;
+                    break;
+            }
+
+            return {
+                question,
+                answer: eval(question).toFixed(2) // Calculate the correct answer
+            };
+        }
+
+        let currentProblem = generateProblem();
+
+        // Function to check the user's answer
+        function checkAnswer() {
+            const userAnswer = parseFloat(document.getElementById('answer').value);
+            const correctAnswer = parseFloat(currentProblem.answer);
+
+            if (isNaN(userAnswer)) {
+                document.getElementById('feedback').innerText = 'Please enter a valid number.';
+            } else if (userAnswer === correctAnswer) {
+                document.getElementById('feedback').innerText = 'Correct! Well done.';
+                currentProblem = generateProblem();
+                document.getElementById('question').innerText = currentProblem.question;
+                document.getElementById('answer').value = '';
+            } else {
+                document.getElementById('feedback').innerText = 'Incorrect. Try again.';
+            }
+        }
+
+        // Initial setup
+        document.getElementById('question').innerText = currentProblem.question;
+    </script>
+</body>
+</html>

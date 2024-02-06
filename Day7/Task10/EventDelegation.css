@@ -1,0 +1,36 @@
+h1 {
+    text-align: center;
+}
+
+.items {
+    display: flex;
+    justify-content: center;	
+}
+.item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+	
+}
+.add-to-cart {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.cart {
+    display: flex;
+	flex-direction: column;
+    padding: 10px;
+   text-align: center;
+	}
+ul {
+	
+    list-style-type: none;
+    
+}
+#cart-total {
+    font-weight: bold;
+}

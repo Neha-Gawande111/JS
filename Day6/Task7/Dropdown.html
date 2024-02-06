@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DropDownMenu</title>
+</head>
+<body>
+<ul>
+    <li>
+        <a href="#">Home</a>
+    </li>
+    <li class="has-submenu">
+        <a href="#">Services</a>
+        <ul class="submenu">
+            <li><a href="#">Service 1</a></li>
+            <li><a href="#">Service 2</a></li>
+            <li><a href="#">Service 3</a></li>
+            <li><a href="#">Service 4</a></li>
+            <li><a href="#">Service 5</a></li>
+            <li><a href="#">Service 6</a></li>
+            <li><a href="#">Service 7</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="#">Products</a>
+            <ul class="submenu">
+                <li><a href="#">Product 1</a></li>
+                <li><a href="#">Product 2</a></li>
+                <li><a href="#">Product 3</a></li>
+                <li><a href="#">Product 4</a></li>
+                <li><a href="#">Product 5</a></li>
+                <li><a href="#">Product 6</a></li>
+                <li><a href="#">Product 7</a></li>
+            </ul>
+    </li>
+
+    <li>
+        <a href="#">Contact</a>
+    </li>
+</ul>
+
+    <script>
+        const submenuItems = document.querySelectorAll('.has-submenu');
+
+        submenuItems.forEach(item => { const submenu = item.querySelector('.submenu');
+
+        item.addEventListener('mouseenter', () => { submenu.style.display = 'block'; });
+            
+
+        item.addEventListener('mouseleave', () => { submenu.style.display = 'none'; });    });      
+       
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyToDoList</title>
+</head>
+<body>
+  <div id="todo">
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Add a new task">
+    <button onclick="addTask()">Add</button>
+    <ul id="tasks"></ul>
+</div>
+
+<script>
+    function addTask() 
+    {
+        const taskInput = document.getElementById("taskInput");
+        const taskText = taskInput.value.trim();
+
+        if (taskText === "") 
+        {
+            alert("Please enter a task.");
+            return;
+        }
+
+        const tasksList = document.getElementById("tasks");
+
+        const taskItem = document.createElement("li");
+        taskItem.classList.add("task");
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.addEventListener("change", function () 
+        {
+            toggleTaskCompleted(this);
+        });
+
+        const taskLabel = document.createElement("label");
+        taskLabel.innerText = taskText;
+// task remover
+        const removeButton = document.createElement("button");
+        removeButton.innerText = "Remove";
+        removeButton.addEventListener("click", function () 
+        {
+            removeTask(this);
+        });
+
+        taskItem.appendChild(checkbox);
+        taskItem.appendChild(taskLabel);
+        taskItem.appendChild(removeButton);
+
+        tasksList.appendChild(taskItem);
+
+        taskInput.value = "";
+    }
+
+    function toggleTaskCompleted(checkbox) 
+    {
+        const taskLabel = checkbox.nextSibling;
+        if (checkbox.checked) 
+        {
+            taskLabel.style.textDecoration = "line-through";
+        } 
+        else {
+            taskLabel.style.textDecoration = "none";
+        }
+    }
+
+    function removeTask(button) 
+    {
+        const taskItem = button.parentElement;
+        taskItem.remove();
+    }
+</script>
+</body>
+</html>

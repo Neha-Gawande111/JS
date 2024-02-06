@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MouseOverEvent</title>
+</head>
+<body>
+    <div id="colorChange">
+        <p>When the mouse pointer enters change its background color</p>
+    </div>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() 
+{
+    const colorChange = document.getElementById("colorChange");
+    colorChange.addEventListener("mouseenter", function(){colorChange.style.backgroundColor = "pink";});
+   
+    colorChange.addEventListener("mouseleave", function(){colorChange.style.backgroundColor = "skyblue";});
+});
+</script>
+
+</body>
+</html>

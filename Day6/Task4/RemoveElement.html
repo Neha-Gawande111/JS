@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RemoveElement</title>
+</head>
+<body>
+    <h2>Items in a List</h2>
+
+    <ul id="items">
+    <li>apple <br><button id="btn1" onclick="removeItem(this)">remove-item</button></li>
+    <li>Banana<br><button id="btn2" onclick="removeItem(this)">remove-item</button></li>
+    <li>mango<br><button id="btn3" onclick="removeItem(this)">remove-item</button></li>
+    <li>orange<br><button id="btn4" onclick="removeItem(this)">remove-item</button></li>
+    <li>pineapple<br><button id="btn5" onclick="removeItem(this)">remove-item</button></li>
+    <li>strawberrey<br><button id="btn6" onclick="removeItem(this)">remove-item</button></li>
+    <li>kiwi<br><button id="btn7" onclick="removeItem(this)">remove-item</button></li>
+    </ul>   
+      
+    <script>
+        
+        function removeItem(button)
+        {
+            // Get the parent <li> element of the button
+                const listItem = button.parentElement;
+            // Remove the <li> element from the list
+            listItem.remove();
+           
+        }
+</script>
+
+</body>
+</html>
